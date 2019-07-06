@@ -1,5 +1,6 @@
 package com.mantufo.listsapi.mantufo.listsapi.controller;
 
+import com.google.api.services.sheets.v4.model.GetSpreadsheetByDataFilterRequest;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Cell;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate;
 import com.mantufo.listsapi.mantufo.listsapi.serviece.ListServiece;
@@ -20,7 +21,7 @@ public class ListController {
     public String getAvatar(@PathVariable(value = "arg", required = false) String arg) {
         System.out.println(arg);
         Cell cell = listServiece.getCellByCoordinate(new Coordinate(0, 0));
-        ListServiece.refillListOfCells();
+        //ListServiece.refillListOfCells();
         return cell.getValue();
     }
 }
