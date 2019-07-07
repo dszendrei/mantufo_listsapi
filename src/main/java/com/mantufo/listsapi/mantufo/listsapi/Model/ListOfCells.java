@@ -15,5 +15,6 @@ import java.util.List;
 public class ListOfCells {
 
     private List<Cell> listOfCells = new ArrayList<>();
+    private String sheetName;
 
 }
