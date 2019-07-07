@@ -1,4 +1,4 @@
-package com.mantufo.listsapi.mantufo.listsapi.serviece;
+package com.mantufo.listsapi.mantufo.listsapi.service;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -12,7 +12,7 @@ public class GoogleSheetsUtil {
         Sheets sheets = new Sheets.Builder(
                 GoogleNetHttpTransport.newTrustedTransport(),
                 JacksonFactory.getDefaultInstance(),
-                GoogleSheetsCredential.getCredential())
+                GoogleSheetsCredential.getCredentials())
                 .setApplicationName("Google Sheets Client").build();
         return sheets;
     }

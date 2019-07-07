@@ -1,4 +1,4 @@
-package com.mantufo.listsapi.mantufo.listsapi.serviece;
+package com.mantufo.listsapi.mantufo.listsapi.service;
 import org.junit.Test;
 
 import java.io.IOException;

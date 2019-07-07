@@ -1,4 +1,4 @@
-package com.mantufo.listsapi.mantufo.listsapi.serviece;
+package com.mantufo.listsapi.mantufo.listsapi.service;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.Spreadsheet;
