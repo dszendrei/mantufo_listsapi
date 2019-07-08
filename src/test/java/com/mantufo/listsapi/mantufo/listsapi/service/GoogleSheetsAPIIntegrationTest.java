@@ -1,6 +1,7 @@
 package com.mantufo.listsapi.mantufo.listsapi.service;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Cell;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate;
+import com.mantufo.listsapi.mantufo.listsapi.Model.SheetNames;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -8,10 +9,8 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GoogleSheetsAPIIntegrationTest {
     private static String SPREADSHEET_ID = "1ICM830TsC433d3FB6P1bFMZ7_zvo6a39RFUMbm6GtSI";
@@ -24,7 +23,22 @@ public class GoogleSheetsAPIIntegrationTest {
 
     @Test
     public void testOneCell() throws IOException {
-        assertEquals("Egyetem", service.getRange(SPREADSHEET_ID, "A1").getValues().get(0).get(0));
+        assertEquals("Egyetem", service
+                .getRange(SPREADSHEET_ID, SheetNames.TANTARGYAK_ITTHON + "A1").getValues().get(0).get(0));
+        assertEquals("Ajánlott szakok:", service
+                .getRange(SPREADSHEET_ID, SheetNames.SZAKOK + "A1").getValues().get(0).get(0));
+        assertEquals("Verseny neve", service
+                .getRange(SPREADSHEET_ID, SheetNames.VERSENYEK + "A1").getValues().get(0).get(0));
+        assertEquals("Diploma", service
+                .getRange(SPREADSHEET_ID, SheetNames.EUROPAI_DIPLOMAK + "A1").getValues().get(0).get(0));
+        assertEquals("Események amikre mutató linket édemes berakni a honlapba:", service
+                .getRange(SPREADSHEET_ID, SheetNames.ESEMENYEK + "A1").getValues().get(0).get(0));
+        assertEquals("Űrkatalógus 2016", service
+                .getRange(SPREADSHEET_ID, SheetNames.KUTATOCSOPORTOK_ES_CEGEK + "A1").getValues().get(0).get(0));
+        assertEquals("Potenciális partnerek", service
+                .getRange(SPREADSHEET_ID, SheetNames.PARTNEREK + "A1").getValues().get(0).get(0));
+        assertEquals("Mikor", service
+                .getRange(SPREADSHEET_ID, SheetNames.EDDIGI_MEGJELENESEINK + "A1").getValues().get(0).get(0));
     }
 
     @Test
@@ -35,13 +49,12 @@ public class GoogleSheetsAPIIntegrationTest {
 
     @Test
     public void test2DRangeSection() throws IOException {
-        List<List<Object>> values = service.getRange(SPREADSHEET_ID, "A2:B3").getValues();
+        String range = "A2:B3";
+        List<List<Object>> values = service.getRange(SPREADSHEET_ID, range).getValues();
         List<Cell> cells = values.stream()
                 .flatMap(list -> list.stream().map(cell -> new Cell(new Coordinate(0, 0), String.valueOf(cell))))
                 .collect(Collectors.toList());
         cells.forEach(System.out::println);
-
-        IntStream.rangeClosed('A', 'Z').mapToObj(var -> (char) var).forEach(System.out::println);
 
         //assertArrayEquals(new String[][] {{"BME", "Űrdinamika"},{"BME", "Űrtechnológia"}}, service.getRange(SPREADSHEET_ID, "A2:B3").getValues().toArray());
     }

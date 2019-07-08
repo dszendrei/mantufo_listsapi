@@ -3,8 +3,7 @@ package com.mantufo.listsapi.mantufo.listsapi.model;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CoordinateTest {
 
@@ -40,5 +39,7 @@ public class CoordinateTest {
                 () -> assertEquals(53, Coordinate.calculateIntXCoordinate("BA"), "BA"),
                 () -> assertEquals(731, Coordinate.calculateIntXCoordinate("ABC"), "ABC")
         );
+        assertThrows(IllegalArgumentException.class, () -> Coordinate.calculateIntXCoordinate(""));
+        assertThrows(IllegalArgumentException.class, () -> Coordinate.calculateIntXCoordinate("2"));
     }
 }

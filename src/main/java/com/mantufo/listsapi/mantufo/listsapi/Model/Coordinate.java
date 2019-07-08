@@ -2,6 +2,9 @@ package com.mantufo.listsapi.mantufo.listsapi.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.apache.el.stream.Stream;
+
+import java.io.InputStream;
 
 @Getter
 @AllArgsConstructor
@@ -33,7 +36,11 @@ public class Coordinate {
 
     public static int calculateIntXCoordinate(String Xvalue) {
         String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        if (Xvalue.length() < 1 || Xvalue == null) throw new IllegalArgumentException();
+        if (Xvalue.chars().anyMatch(c -> !letters.contains(String.valueOf((char) c)))) {
+            throw new IllegalArgumentException("Use only capital abc letters!");
+        } else if (Xvalue.length() < 1) {
+            throw new IllegalArgumentException();
+        }
         int returnValue = 0;
 
         for (int i = 0; i < Xvalue.length() - 1; i++) {
