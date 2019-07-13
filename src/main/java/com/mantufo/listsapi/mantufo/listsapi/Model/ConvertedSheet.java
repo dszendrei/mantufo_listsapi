@@ -1,5 +1,6 @@
 package com.mantufo.listsapi.mantufo.listsapi.Model;
 
+import com.mantufo.listsapi.mantufo.listsapi.Model.Enum.SheetNames;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -9,13 +10,12 @@ import static com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate.LETTERS;
 
 @Getter
 public class ConvertedSheet {
-
-    private List<Row> listOfRows;
-    private List<Cell> headers;
     private String sheetName;
+    private List<Cell> headers;
+    private List<Row> listOfRows;
 
     public ConvertedSheet(String name, String range, List<List<String>> values) {
-        this.sheetName = name;
+        this.sheetName = SheetNames.valueOf(name.toUpperCase()).toString();
         listOfRows = new ArrayList<>();
         headers = new ArrayList<>();
         String[] startAndEnd = range.split(":");

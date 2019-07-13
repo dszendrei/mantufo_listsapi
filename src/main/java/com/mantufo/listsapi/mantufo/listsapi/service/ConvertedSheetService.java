@@ -16,7 +16,7 @@ public class ConvertedSheetService {
     }
 
     public ConvertedSheet getSheet(String worksheet, String range) throws IOException {
-        List<List<String>> values = service.getValues(SPREADSHEET_ID, SheetNames.valueOf(worksheet.toUpperCase()) + range);
+        List<List<String>> values = service.getValues(SPREADSHEET_ID, SheetNames.convertSheetNameToGetValues(worksheet) + range);
         return new ConvertedSheet(worksheet, range, values);
     }
 }
