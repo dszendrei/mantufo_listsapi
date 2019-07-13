@@ -1,4 +1,4 @@
-package com.mantufo.listsapi.mantufo.listsapi.Model;
+package com.mantufo.listsapi.mantufo.listsapi.Model.Enum;
 
 public enum SheetNames {
     TANTARGYAK_ITTHON("'Tantárgyak itthon'!"),

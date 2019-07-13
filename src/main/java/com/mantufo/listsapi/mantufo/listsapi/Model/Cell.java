@@ -1,9 +1,9 @@
 package com.mantufo.listsapi.mantufo.listsapi.Model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class Cell {
     private Coordinate coordinate;
