@@ -1,7 +1,7 @@
 package com.mantufo.listsapi.mantufo.listsapi.service;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Cell;
 import com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate;
-import com.mantufo.listsapi.mantufo.listsapi.Model.SheetNames;
+import com.mantufo.listsapi.mantufo.listsapi.Model.Enum.SheetNames;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -10,10 +10,10 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.mantufo.listsapi.mantufo.listsapi.service.ConvertedSheetService.SPREADSHEET_ID;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GoogleSheetsAPIIntegrationTest {
-    private static String SPREADSHEET_ID = "1ICM830TsC433d3FB6P1bFMZ7_zvo6a39RFUMbm6GtSI";
     GoogleSheetsService service;
 
     @BeforeEach
