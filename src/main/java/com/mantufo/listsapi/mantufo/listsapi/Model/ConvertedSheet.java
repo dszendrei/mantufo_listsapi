@@ -42,6 +42,14 @@ public class ConvertedSheet {
             for (int j = 0; j < values.get(i).size(); j++) {
                 listOfCells.add(new Cell(new Coordinate(intStartX + j, intStartY + i), values.get(i).get(j)));
             }
+            int numOfEmptyCell = headers.size() - listOfCells.size();
+            if (numOfEmptyCell > 0 && !listOfCells.isEmpty()) {
+                for (int k = 0; k < numOfEmptyCell; k++) {
+                    listOfCells.add(new Cell(new Coordinate(
+                           listOfCells.get(listOfCells.size() - 1).getCoordinate().getX() + 1,
+                           listOfCells.get(listOfCells.size() - 1).getCoordinate().getY()), " "));
+                }
+            }
             listOfRows.add(new Row(i, listOfCells));
         }
     }
