@@ -20,7 +20,7 @@ public class GoogleSheetsService {
     }
 
     public List<List<String>> getValues(String sheetId, String range) throws IOException {
-        return sheetsService.spreadsheets().values().get(sheetId, range).execute().getValues()
+        return getRange(sheetId, range).getValues()
                 .stream().map(l -> l.stream().map(Object::toString).collect(toList())).collect(toList());
     }
 }
