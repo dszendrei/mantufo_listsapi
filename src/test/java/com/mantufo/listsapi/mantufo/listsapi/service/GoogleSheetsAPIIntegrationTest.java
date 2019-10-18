@@ -1,7 +1,7 @@
 package com.mantufo.listsapi.mantufo.listsapi.service;
-import com.mantufo.listsapi.mantufo.listsapi.Model.Cell;
-import com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate;
-import com.mantufo.listsapi.mantufo.listsapi.Model.Enum.SheetNames;
+import com.mantufo.listsapi.mantufo.listsapi.model.Cell;
+import com.mantufo.listsapi.mantufo.listsapi.model.Coordinate;
+import com.mantufo.listsapi.mantufo.listsapi.model.enums.SheetNames;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 

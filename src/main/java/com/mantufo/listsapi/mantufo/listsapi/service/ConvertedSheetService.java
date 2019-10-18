@@ -1,6 +1,6 @@
 package com.mantufo.listsapi.mantufo.listsapi.service;
-import com.mantufo.listsapi.mantufo.listsapi.Model.ConvertedSheet;
-import com.mantufo.listsapi.mantufo.listsapi.Model.Enum.SheetNames;
+import com.mantufo.listsapi.mantufo.listsapi.model.ConvertedSheet;
+import com.mantufo.listsapi.mantufo.listsapi.model.enums.SheetNames;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

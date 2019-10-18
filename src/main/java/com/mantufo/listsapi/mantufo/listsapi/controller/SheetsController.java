@@ -1,6 +1,6 @@
 package com.mantufo.listsapi.mantufo.listsapi.controller;
 
-import com.mantufo.listsapi.mantufo.listsapi.Model.ConvertedSheet;
+import com.mantufo.listsapi.mantufo.listsapi.model.ConvertedSheet;
 import com.mantufo.listsapi.mantufo.listsapi.service.ConvertedSheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

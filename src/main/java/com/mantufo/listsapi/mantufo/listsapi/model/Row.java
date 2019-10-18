@@ -1,4 +1,4 @@
-package com.mantufo.listsapi.mantufo.listsapi.Model;
+package com.mantufo.listsapi.mantufo.listsapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

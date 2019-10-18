@@ -1,12 +1,12 @@
-package com.mantufo.listsapi.mantufo.listsapi.Model;
+package com.mantufo.listsapi.mantufo.listsapi.model;
 
-import com.mantufo.listsapi.mantufo.listsapi.Model.Enum.SheetNames;
+import com.mantufo.listsapi.mantufo.listsapi.model.enums.SheetNames;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mantufo.listsapi.mantufo.listsapi.Model.Coordinate.LETTERS;
+import static com.mantufo.listsapi.mantufo.listsapi.model.Coordinate.LETTERS;
 
 @Getter
 public class ConvertedSheet {
