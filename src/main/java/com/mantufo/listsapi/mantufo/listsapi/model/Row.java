@@ -8,6 +8,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Row {
-    int index;
-    List<Cell> listOfCells;
+    //int index;
+    List<String> listOfCells;
 }
