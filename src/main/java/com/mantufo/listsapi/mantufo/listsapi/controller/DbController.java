@@ -31,28 +31,17 @@ public class DbController {
                                        @PathVariable(value = "range", required = false) String range) throws IOException {
         ConvertedSheet sheet = convertedSheetService.getSheet(worksheet, range);
         MongoClient mongoClient = new MongoClient("localhost", 27017);
-        //CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-        //        fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        MongoDatabase database = mongoClient.getDatabase("mant_lists");//.withCodecRegistry(pojoCodecRegistry);
+        MongoDatabase database = mongoClient.getDatabase("mant_lists");
         database.drop();
         database.createCollection(sheet.getSheetName());
-        MongoCursor<String> collectionNameIterator = database.listCollectionNames().iterator();
-        while (collectionNameIterator.hasNext()) {
-            System.out.println(collectionNameIterator.next());
-        }
         Document document = new Document();
+        document.put("sheetName", sheet.getSheetName());
         document.put("headers", sheet.getHeaders());
-        /*List<List<String>> listOfRowsFromSheets = sheet.getListOfRows();
-        for (int i = 0; i < listOfRowsFromSheets.size(); i++) {
-            document.put(""+i, listOfRowsFromSheets.get(i));
-        }*/
         document.put("listOfRows", sheet.getListOfRows());
         MongoCollection<Document> collection = database.getCollection(sheet.getSheetName());
         collection.insertOne(document);
         FindIterable<Document> documents = collection.find();
         MongoCursor<Document> docIter = documents.iterator();
-        Document docu = docIter.next();
-        System.out.println("2");
-        return docu;
+        return docIter.next();
     }
 }
