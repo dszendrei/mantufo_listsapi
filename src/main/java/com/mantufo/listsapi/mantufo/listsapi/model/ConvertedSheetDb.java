@@ -4,19 +4,21 @@ import com.mantufo.listsapi.mantufo.listsapi.model.enums.SheetNames;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.mantufo.listsapi.mantufo.listsapi.model.Coordinate.LETTERS;
 
 @Getter
-public class ConvertedSheet {
+public class ConvertedSheetDb {
     private String sheetName;
-    private List<Cell> headers;
-    private List<Row> listOfRows;
+    private List<String> headers;
+    private Map<String, Map<String, String>> listOfRows;
 
-    public ConvertedSheet(String name, String range, List<List<String>> values) {
+    public ConvertedSheetDb(String name, String range, List<List<String>> values) {
         this.sheetName = SheetNames.valueOf(name.toUpperCase()).toString();
-        listOfRows = new ArrayList<>();
+        listOfRows = new LinkedHashMap<>();
         headers = new ArrayList<>();
         String[] startAndEnd = range.split(":");
         StringBuilder startX = new StringBuilder();
@@ -30,27 +32,23 @@ public class ConvertedSheet {
             }
         }
 
-        int intStartX = Coordinate.calculateIntXCoordinate(startX.toString());
-        int intStartY = Integer.valueOf(startY.toString());
-
         for (int i = 0; i < values.get(0).size(); i++) {
-            headers.add(new Cell(new Coordinate(intStartX + i, intStartY), values.get(0).get(i)));
+            headers.add(values.get(0).get(i));
         }
 
         for (int i = 1; i < values.size(); i++) {
-            List<Cell> listOfCells = new ArrayList<>();
+            Map<String, String> listOfCells = new LinkedHashMap<>();
             for (int j = 0; j < values.get(i).size(); j++) {
-                listOfCells.add(new Cell(new Coordinate(intStartX + j, intStartY + i), values.get(i).get(j)));
+                listOfCells.put(Coordinate.calculateStringXCoordinate(j + 1) + (i + 1), values.get(i).get(j));
             }
             int numOfEmptyCell = headers.size() - listOfCells.size();
             if (numOfEmptyCell > 0 && !listOfCells.isEmpty()) {
                 for (int k = 0; k < numOfEmptyCell; k++) {
-                    listOfCells.add(new Cell(new Coordinate(
-                           listOfCells.get(listOfCells.size() - 1).getCoordinate().getX() + 1,
-                           listOfCells.get(listOfCells.size() - 1).getCoordinate().getY()), " "));
+                    listOfCells.put(Coordinate
+                            .calculateStringXCoordinate(listOfCells.size() + 1 + k) + (i + 1), " ");
                 }
             }
-            listOfRows.add(new Row(i, listOfCells));
+            listOfRows.put("" + (i + 1), listOfCells);
         }
     }
 }
