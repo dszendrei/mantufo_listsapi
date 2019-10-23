@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Configuration
@@ -47,6 +48,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.and()
 			.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/db/logout"))
 				.logoutSuccessUrl("/db/login?logout")
 				.permitAll()
 			;
