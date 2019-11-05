@@ -46,6 +46,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/db/login")
 				.permitAll()
+				.successForwardUrl("/db/renew")
 				.and()
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/db/logout"))

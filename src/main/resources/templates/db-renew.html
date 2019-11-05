@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DB ADMIN MANT-UFO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" href="/vendor/bootstrap/css/coreui.min.css">
+<!--===============================================================================================-->
+    <script src="/vendor/jquery/jquery-3.2.1.min.js" defer></script>
+<!--===============================================================================================-->
+    <script src="/vendor/bootstrap/js/popper.min.js" defer></script>
+<!--===============================================================================================-->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js" defer></script>
+<!--===============================================================================================-->
+    <script src="/js/db-renew.js" defer></script>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="box col-8">
+				<form method="post" th:action="@{/db/renew}">
+                    <h1>Database admin page for MANT-ÜFO</h1>
+                    <p>This page is for reloading the data from the google sheets document. Select the tables you want to renew:</p>
+					<div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="szakok_sw" name="SZAKOK">
+                            <label class="custom-control-label" for="szakok_sw">Szakok</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="tantargyak_itthon_sw" name="TANTARGYAK_ITTHON">
+                            <label class="custom-control-label" for="tantargyak_itthon_sw">Tantárgyak itthon</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="versenyek_sw" name="VERSENYEK">
+                            <label class="custom-control-label" for="versenyek_sw">Versenyek</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="europai_diplomak_sw" name="EUROPAI_DIPLOMAK">
+                            <label class="custom-control-label" for="europai_diplomak_sw">Európai diplomák</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="esemenyek_sw" name="ESEMENYEK">
+                            <label class="custom-control-label" for="esemenyek_sw">Események</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="kutatocsoportok_sw" name="KUTATOCSOPORTOK_ES_CEGEK">
+                            <label class="custom-control-label" for="kutatocsoportok_sw">Kutatócsoportok és cégek</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="megjelenesek_sw" name="EDDIGI_MEGJELENESEINK">
+                            <label class="custom-control-label" for="megjelenesek_sw">Eddigi megjelenéseink</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input sw" id="partnerek_sw" name="PARTNEREK">
+                            <label class="custom-control-label" for="partnerek_sw">Partnerek</label>
+                        </div>
+                    </div>
+                <button type="button" class="btn btn-secondary" id="check-all-btn" onClick="check_all()"> Select all </button>
+                <button type="submit" class="btn btn-primary">Renew</button>
+                <button type="button" class="btn btn-secondary" id="logout-btn">Logout</button>
+            </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</body>
+</html>
