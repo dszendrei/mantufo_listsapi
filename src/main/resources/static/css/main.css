@@ -3,10 +3,11 @@
     margin: auto;
     padding: 30px;
     border-radius: 15px;
+    box-shadow: 4px 6px #333;
 }
 
 .row {
-    padding: 27vh 0;
+    padding: 25vh 0;
 }
 
 body {
