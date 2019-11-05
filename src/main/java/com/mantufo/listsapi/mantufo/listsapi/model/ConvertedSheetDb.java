@@ -16,25 +16,12 @@ public class ConvertedSheetDb {
     private List<String> headers;
     private Map<String, Map<String, String>> listOfRows;
 
-    public ConvertedSheetDb(String name, String range, List<List<String>> values) {
+    public ConvertedSheetDb(String name, List<List<String>> values) {
         this.sheetName = SheetNames.valueOf(name.toUpperCase()).toString();
         listOfRows = new LinkedHashMap<>();
         headers = new ArrayList<>();
-        String[] startAndEnd = range.split(":");
-        StringBuilder startX = new StringBuilder();
-        StringBuilder startY = new StringBuilder();
 
-        for (char c : startAndEnd[0].toCharArray()) {
-            if (LETTERS.contains(String.valueOf(c))) {
-                startX.append(c);
-            } else {
-                startY.append(c);
-            }
-        }
-
-        for (int i = 0; i < values.get(0).size(); i++) {
-            headers.add(values.get(0).get(i));
-        }
+        headers.addAll(values.get(0));
 
         for (int i = 1; i < values.size(); i++) {
             Map<String, String> listOfCells = new LinkedHashMap<>();
