@@ -5,6 +5,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.*;
 import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -12,17 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/listsdb")
 public class DbController {
 
+    @Autowired
+    MongoDatabase database;
+
     @CrossOrigin
-    @GetMapping("/{worksheet}/{range}")
+    @GetMapping("/{worksheet}")
     public Document getConvertedSheets(@PathVariable(value = "worksheet", required = false) String worksheet) {
-        String userName = System.getenv("dbUserName");
-        String password = System.getenv("dbPassword");
-        String dbUrlAndPort = System.getenv("dbUrlAndPort");
-        String dbName = System.getenv("dbName");
-        MongoClientURI mongoClientURI = new MongoClientURI("mongodb://" + userName
-                + ":" + password + "@" + dbUrlAndPort + "/" + dbName + "?retryWrites=false");
-        MongoClient mongoClient = new MongoClient(mongoClientURI);
-        MongoDatabase database = mongoClient.getDatabase(dbName);
         String sheetName = SheetNames.valueOf(worksheet.toUpperCase()).toString();
         MongoCollection<Document> collection = database.getCollection(sheetName);
         FindIterable<Document> dbDocuments = collection.find();
