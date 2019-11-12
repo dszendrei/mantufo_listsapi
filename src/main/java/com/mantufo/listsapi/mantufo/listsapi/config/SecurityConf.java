@@ -17,9 +17,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.Collections;
 
-@EnableGlobalMethodSecurity(securedEnabled = true)
-@EnableWebSecurity
 @Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConf extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
