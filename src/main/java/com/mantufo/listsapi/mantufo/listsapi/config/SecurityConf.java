@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
 
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Configuration
@@ -31,7 +32,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and()
+		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
 			.authorizeRequests()
 				.antMatchers("/db/renew").hasRole("ADMIN")
 				.and()
